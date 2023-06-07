@@ -1,4 +1,6 @@
 export default function displayDetails(todoItem, htmlContainer) {
+  // eslint-disable-next-line no-param-reassign
+  htmlContainer.innerHTML = '';
   const detailsList = document.createElement('ul');
   htmlContainer.append(detailsList);
   const titleElement = document.createElement('li');

@@ -1,4 +1,8 @@
-h1 {
-  color: red;
+.hidden {
+  display: none;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
