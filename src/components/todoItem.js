@@ -5,27 +5,28 @@ export default function todoItem({
   dueDate,
   priority,
 }) {
-  let chosenTitle = typeof title === 'undefined' ? 'Untitled' : title;
+  // this is backup only since will make title mandatory field
+  let chosenTitle = title === '' ? 'Untitled' : title;
   const getTitle = () => chosenTitle;
   const setTitle = (newTitle) => {
     chosenTitle = newTitle;
   };
-  let chosenProject = typeof project === 'undefined' ? 'None' : project;
+  let chosenProject = project === '' ? 'None' : project;
   const getProject = () => chosenProject;
   const setProject = (newProject) => {
     chosenProject = newProject;
   };
-  let chosenDescription = typeof description === 'undefined' ? 'No description' : description;
+  let chosenDescription = description === '' ? 'No description' : description;
   const getDescription = () => chosenDescription;
   const setDescription = (newDescription) => {
     chosenDescription = newDescription;
   };
-  let chosenDueDate = typeof dueDate === 'undefined' ? 'None' : dueDate;
+  let chosenDueDate = dueDate === '' ? 'None' : dueDate;
   const getDueDate = () => chosenDueDate;
   const setDueDate = (newDueDate) => {
     chosenDueDate = newDueDate;
   };
-  let chosenPriority = typeof priority === 'undefined' ? 'None' : priority;
+  let chosenPriority = priority === '' ? 'None' : priority;
   const getPriority = () => chosenPriority;
   const setPriority = (newChosenPriority) => {
     if (!['None', 'Low', 'Medium', 'High'].includes(newChosenPriority)) {

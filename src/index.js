@@ -3,20 +3,28 @@ import todoItem from './components/todoItem';
 import displayTodoList from './displayControllers/displayTodoList';
 import displayDetails from './displayControllers/displayDetails';
 
+// image credit: <a href="https://www.freepik.com/free-photo/background-sea-water_4433046.htm#query=ocean&position=47&from_view=search&track=sph">Image by kdekiara</a> on Freepik
+
 // basic structure for page:
 const container = document.createElement('div');
+container.classList.add('backgroundImageBox');
 document.body.appendChild(container);
-const title = document.createElement('h1');
-container.appendChild(title);
-title.textContent = 'To-do List';
-const detailsBox = document.createElement('div');
-container.appendChild(detailsBox);
+//const detailsBox = document.createElement('div');
+//container.appendChild(detailsBox);
 const todoBox = document.createElement('div');
 container.appendChild(todoBox);
+const todoHeader = document.createElement('div');
+todoBox.append(todoHeader);
+todoBox.classList.add('todoBox');
+const todoTitle = document.createElement('div');
+todoTitle.textContent = 'Tasks';
+todoHeader.classList.add('todoHeader');
+todoHeader.append(todoTitle);
 const addNewButton = document.createElement('button');
 addNewButton.textContent = 'Add new';
-todoBox.appendChild(addNewButton);
-const htmlList = document.createElement('ol');
+addNewButton.classList.add('addNew');
+todoHeader.appendChild(addNewButton);
+const htmlList = document.createElement('div');
 todoBox.appendChild(htmlList);
 
 // form for adding new tasks:
@@ -29,6 +37,7 @@ titleLabel.textContent = 'Task:';
 formAddTodo.appendChild(titleLabel);
 const titleEntry = document.createElement('input');
 titleEntry.setAttribute('type', 'text');
+titleEntry.setAttribute('required', 'required');
 formAddTodo.appendChild(titleEntry);
 const projectLabel = document.createElement('label');
 projectLabel.textContent = 'Project:';
@@ -57,6 +66,7 @@ formAddTodo.appendChild(priorityEntry);
 const formSubmit = document.createElement('button');
 formSubmit.setAttribute('type', 'submit');
 formSubmit.textContent = 'Add task';
+formSubmit.classList.add('formSubmit');
 formAddTodo.appendChild(formSubmit);
 
 // can immediately invoke because only need one todo list
@@ -87,9 +97,11 @@ function onNewEntry(todoList, htmlParent) {
 
 formSubmit.addEventListener('click', (e) => {
   e.preventDefault();
-  onNewEntry(allTodos, htmlList);
-  formAddTodo.reset();
-  formAddTodo.classList.add('hidden');
+  if (titleEntry.value !== '') {
+    onNewEntry(allTodos, htmlList);
+    formAddTodo.reset();
+    formAddTodo.classList.add('hidden');
+  }
 });
 
 addNewButton.addEventListener('click', () => {
@@ -113,4 +125,4 @@ allTodos.addTodo(todoItem({
 }));
 
 displayTodoList(allTodos, htmlList);
-displayDetails(allTodos.getListOfTodos()[0], detailsBox);
+//displayDetails(allTodos.getListOfTodos()[0], detailsBox);
