@@ -5,8 +5,6 @@ import displayAddNewForm from './displayControllers/displayAddNewForm';
 import displayTodoList from './displayControllers/displayTodoList';
 import displayDetails from './displayControllers/displayDetails';
 
-// image credit: <a href="https://www.freepik.com/free-photo/background-sea-water_4433046.htm#query=ocean&position=47&from_view=search&track=sph">Image by kdekiara</a> on Freepik
-
 // attach main structure to the document body and query select needed dom elements
 document.body.appendChild(displayMainStructure());
 const htmlList = document.querySelector('.htmlList');
