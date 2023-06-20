@@ -1,73 +1,27 @@
 import './style.css';
 import todoItem from './components/todoItem';
+import displayMainStructure from './displayControllers/displayMainStructure';
+import displayAddNewForm from './displayControllers/displayAddNewForm';
 import displayTodoList from './displayControllers/displayTodoList';
 import displayDetails from './displayControllers/displayDetails';
 
 // image credit: <a href="https://www.freepik.com/free-photo/background-sea-water_4433046.htm#query=ocean&position=47&from_view=search&track=sph">Image by kdekiara</a> on Freepik
 
-// basic structure for page:
-const container = document.createElement('div');
-container.classList.add('backgroundImageBox');
-document.body.appendChild(container);
-//const detailsBox = document.createElement('div');
-//container.appendChild(detailsBox);
-const todoBox = document.createElement('div');
-container.appendChild(todoBox);
-const todoHeader = document.createElement('div');
-todoBox.append(todoHeader);
-todoBox.classList.add('todoBox');
-const todoTitle = document.createElement('div');
-todoTitle.textContent = 'Tasks';
-todoHeader.classList.add('todoHeader');
-todoHeader.append(todoTitle);
-const addNewButton = document.createElement('button');
-addNewButton.textContent = 'Add new';
-addNewButton.classList.add('addNew');
-todoHeader.appendChild(addNewButton);
-const htmlList = document.createElement('div');
-todoBox.appendChild(htmlList);
+// attach main structure to the document body and query select needed dom elements
+document.body.appendChild(displayMainStructure());
+const htmlList = document.querySelector('.htmlList');
+const backgroundImageBox = document.querySelector('.backgroundImageBox');
+const addNewButton = document.querySelector('.addNewButton')
+const formAddTodo = displayAddNewForm();
 
-// form for adding new tasks:
-const formAddTodo = document.createElement('form');
-container.appendChild(formAddTodo);
-// start hidden
-formAddTodo.classList.add('hidden');
-const titleLabel = document.createElement('label');
-titleLabel.textContent = 'Task:';
-formAddTodo.appendChild(titleLabel);
-const titleEntry = document.createElement('input');
-titleEntry.setAttribute('type', 'text');
-titleEntry.setAttribute('required', 'required');
-formAddTodo.appendChild(titleEntry);
-const projectLabel = document.createElement('label');
-projectLabel.textContent = 'Project:';
-formAddTodo.appendChild(projectLabel);
-const projectEntry = document.createElement('input');
-projectEntry.setAttribute('type', 'text');
-formAddTodo.appendChild(projectEntry);
-const descriptionLabel = document.createElement('label');
-descriptionLabel.textContent = 'Description:';
-formAddTodo.appendChild(descriptionLabel);
-const descriptionEntry = document.createElement('input');
-descriptionEntry.setAttribute('type', 'text');
-formAddTodo.appendChild(descriptionEntry);
-const dueDateLabel = document.createElement('label');
-dueDateLabel.textContent = 'Due:';
-formAddTodo.appendChild(dueDateLabel);
-const dueDateEntry = document.createElement('input');
-dueDateEntry.setAttribute('type', 'text');
-formAddTodo.appendChild(dueDateEntry);
-const priorityLabel = document.createElement('label');
-priorityLabel.textContent = 'Priority:';
-formAddTodo.appendChild(priorityLabel);
-const priorityEntry = document.createElement('input');
-priorityEntry.setAttribute('type', 'text');
-formAddTodo.appendChild(priorityEntry);
-const formSubmit = document.createElement('button');
-formSubmit.setAttribute('type', 'submit');
-formSubmit.textContent = 'Add task';
-formSubmit.classList.add('formSubmit');
-formAddTodo.appendChild(formSubmit);
+// attach form and query select all form elements (but not labels)
+backgroundImageBox.appendChild(formAddTodo);
+const formSubmit = document.querySelector('.formSubmit');
+const titleEntry = document.querySelector('.titleEntry');
+const projectEntry = document.querySelector('.projectEntry');
+const descriptionEntry = document.querySelector('.descriptionEntry');
+const dueDateEntry = document.querySelector('.dueDateEntry');
+const priorityEntry = document.querySelector('.priorityEntry');
 
 // can immediately invoke because only need one todo list
 const allTodos = (() => {
