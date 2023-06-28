@@ -1,25 +1,34 @@
 import './style.css';
 import todoItem from './components/todoItem';
-import displayMainStructure from './displayControllers/displayMainStructure';
 import displayAddNewForm from './displayControllers/displayAddNewForm';
 import displayTodoList from './displayControllers/displayTodoList';
-import displayDetails from './displayControllers/displayDetails';
 
-// attach main structure to the document body and query select needed dom elements
-document.body.appendChild(displayMainStructure());
-const htmlList = document.querySelector('.htmlList');
-const backgroundImageBox = document.querySelector('.backgroundImageBox');
-const addNewButton = document.querySelector('.addNewButton')
-const formAddTodo = displayAddNewForm();
+// create main structure in the DOM
+const backgroundImageBox = document.createElement('div');
+backgroundImageBox.classList.add('backgroundImageBox');
+document.body.appendChild(backgroundImageBox);
 
-// attach form and query select all form elements (but not labels)
-backgroundImageBox.appendChild(formAddTodo);
-const formSubmit = document.querySelector('.formSubmit');
-const titleEntry = document.querySelector('.titleEntry');
-const projectEntry = document.querySelector('.projectEntry');
-const descriptionEntry = document.querySelector('.descriptionEntry');
-const dueDateEntry = document.querySelector('.dueDateEntry');
-const priorityEntry = document.querySelector('.priorityEntry');
+const todoBox = document.createElement('div');
+todoBox.classList.add('todoBox');
+backgroundImageBox.appendChild(todoBox);
+
+const todoHeader = document.createElement('div');
+todoHeader.classList.add('todoHeader');
+todoBox.append(todoHeader);
+
+const todoTitle = document.createElement('div');
+todoTitle.classList.add('todoTitle');
+todoTitle.textContent = 'Tasks';
+todoHeader.append(todoTitle);
+
+const addNewButton = document.createElement('button');
+addNewButton.classList.add('addNewButton');
+addNewButton.textContent = 'Add new';
+todoHeader.appendChild(addNewButton);
+
+const htmlList = document.createElement('div');
+htmlList.classList.add('htmlList');
+todoBox.appendChild(htmlList);
 
 // can immediately invoke because only need one todo list
 const allTodos = (() => {
@@ -37,30 +46,15 @@ const allTodos = (() => {
   return { getListOfTodos, getProjects, addTodo, deleteTodo };
 })();
 
-function onNewEntry(todoList, htmlParent) {
-  todoList.addTodo(todoItem({
-    title: titleEntry.value,
-    project: projectEntry.value,
-    description: descriptionEntry.value,
-    dueDate: dueDateEntry.value,
-    priority: priorityEntry.value,
-  }));
-  displayTodoList(todoList, htmlParent);
-}
-
-formSubmit.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (titleEntry.value !== '') {
-    onNewEntry(allTodos, htmlList);
-    formAddTodo.reset();
-    formAddTodo.classList.add('hidden');
-  }
-});
-
 addNewButton.addEventListener('click', () => {
-  formAddTodo.classList.remove('hidden');
-  titleEntry.focus();
+  /* display add new form includes the code to add the new item to the 
+     todolist supplied. Easier to do it this way since otherwise you have to 
+     query-selector all the fields created by the add new form, as well as the 
+     button. Ultimately it's just using a function that already exists so 
+     still counts as separation of display and application logic I think. */
+  displayAddNewForm(allTodos, htmlList, backgroundImageBox);
 });
+
 // provide user with two examples
 allTodos.addTodo(todoItem({
   title: 'Merge sales and marketing',
@@ -78,6 +72,3 @@ allTodos.addTodo(todoItem({
 }));
 
 displayTodoList(allTodos, htmlList, backgroundImageBox);
-//displayDetails(allTodos.getListOfTodos()[0], detailsBox);
-
-const test = 'hello';

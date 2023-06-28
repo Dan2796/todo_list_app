@@ -1,9 +1,11 @@
-export default function displayAddNewForm() {
+import todoItem from './../components/todoItem';
+import displayTodoList from './displayTodoList';
+
+export default function displayAddNewForm(todoList, htmlTodoList, formContainer) {
   
-  // form for adding new tasks:
   const formAddTodo = document.createElement('form');
-  // start hidden
-  formAddTodo.classList.add('hidden');
+  formContainer.appendChild(formAddTodo);
+  formAddTodo.classList.add('addNewForm');
 
   const titleLabel = document.createElement('label');
   titleLabel.textContent = 'Task:';
@@ -57,5 +59,21 @@ export default function displayAddNewForm() {
   formSubmit.classList.add('formSubmit');
   formAddTodo.appendChild(formSubmit);
 
-  return formAddTodo;
+  titleEntry.focus();
+
+  formSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (titleEntry.value == '') {
+      return;
+    }
+    todoList.addTodo(todoItem({
+      title: titleEntry.value,
+      project: projectEntry.value,
+      description: descriptionEntry.value,
+      dueDate: dueDateEntry.value,
+      priority: priorityEntry.value,
+    }));
+    formContainer.removeChild(formAddTodo);
+    displayTodoList(todoList, htmlTodoList, formContainer);
+  });
 }
