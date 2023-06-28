@@ -34,6 +34,9 @@ export default function todoItem({
     }
     chosenPriority = newChosenPriority;
   };
+  let done = false;
+  const toggleDone = () => done = !done;
+  const getDone = () => done;
   return {
     getTitle,
     setTitle,
@@ -45,5 +48,7 @@ export default function todoItem({
     setDueDate,
     getPriority,
     setPriority,
+    toggleDone,
+    getDone,
   };
 }

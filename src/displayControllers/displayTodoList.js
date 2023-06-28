@@ -10,39 +10,48 @@ export default function displayTodoList(todos, htmlParent, detailsContainer) {
     const itemAndButtons = document.createElement('div');
     itemAndButtons.classList.add('itemAndButtons');
     htmlParent.appendChild(itemAndButtons);
-    const element = document.createElement('div');
-    element.textContent = todo.getTitle();
-    element.classList.add('todoItem');
+    // add title inside container for easy flex placement
+    const titleContainer = document.createElement('div');
+    titleContainer.classList.add('titleContainer');
+    itemAndButtons.appendChild(titleContainer);
     if (todo.getPriority() === 'High') {
-      element.classList.add('highPriority');
+      titleContainer.classList.add('highPriority');
     }
     if (todo.getPriority() === 'Medium') {
-      element.classList.add('mediumPriority');
+      titleContainer.classList.add('mediumPriority');
     }
     if (todo.getPriority() === 'Low') {
-      element.classList.add('lowPriority');
+      titleContainer.classList.add('lowPriority');
     }
-    itemAndButtons.appendChild(element);
+    const title = document.createElement('p');
+    title.textContent = todo.getTitle();
+    title.classList.add('title');
+    titleContainer.appendChild(title);
+    // add date inside container for easy flex placement
+    const dueDateContainer = document.createElement('div');
+    dueDateContainer.classList.add('dueDateContainer');
+    itemAndButtons.appendChild(dueDateContainer);
+    const dueDate = document.createElement('p');
+    dueDate.classList.add('dueDate');
+    dueDate.textContent = todo.getDueDate();
+    dueDateContainer.appendChild(dueDate);
     // add show more button
     const showMoreButton = document.createElement('button');
-    showMoreButton.textContent = '≡️';
-    element.classList.add('showMoreButton')
+    showMoreButton.classList.add('showMoreButton')
     showMoreButton.onclick = () => {
       displayDetails(todo, detailsContainer);
     }
     itemAndButtons.appendChild(showMoreButton);
     // add edit button
     const editButton = document.createElement('button');
-    editButton.textContent = '✐';
-    element.classList.add('editButton')
+    editButton.classList.add('editButton')
     editButton.onclick = () => {
       displayAddOrEditForm(todos, htmlParent, detailsContainer, i);
     }
     itemAndButtons.appendChild(editButton);
     // add delete button
     const deleteButton = document.createElement('button');
-    deleteButton.textContent = '🗑️';
-    element.classList.add('deleteButton')
+    deleteButton.classList.add('deleteButton')
     deleteButton.onclick = () => {
       todos.deleteTodo(i);
       displayTodoList(todos, htmlParent);

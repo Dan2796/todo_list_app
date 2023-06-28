@@ -68,7 +68,7 @@ allTodos.addTodo(todoItem({
   project: 'Swindon merger',
   description: 'Make sure the best people show up',
   dueDate: 'This lunchtime',
-  priorty: 'Medium',
+  priority: 'Medium',
 }));
 
 displayTodoList(allTodos, htmlList, backgroundImageBox);

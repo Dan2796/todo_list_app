@@ -9,7 +9,7 @@ body {
   position: relative;
   min-height: 100vh;
   font-family: sans-serif;
-  background: url('./images/rainy_city.jpg');
+  background: url('./images/fog_blurred.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
@@ -19,39 +19,62 @@ body {
 }
 
 .todoBox {
-  background-color: grey;
-  opacity: 0.9;
-  width: 600px;
-  min-height: 500px;
-  border-radius: 40px;
+  background-color: white;
+  width: 800px;
+  min-height: 600px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px grey;
+  font-size: 16px;
+}
+
+p {
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  background-color: white;
+  border: solid 2px white;
+}
+
+button:hover {
+  cursor: pointer;
+  border: solid 2px black;
 }
 
 .todoHeader {
   padding: 30px;
   display: flex;
   justify-content: space-between;
-  border-radius: 40px 40px 0 0;
-  background-color: white;
+  border-radius: 5px 5px 0 0;
+  background-color: pink;
+  font-size: 22px;
 }
 
-.todoItem {
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  overflow: hidden;
   padding: 10px 30px;
+  background: linear-gradient(90deg, yellow, white 50px);
 }
 
 .highPriority {
-  background-color: red;
+  background: linear-gradient(90deg, red, white 50px);
 }
 
 .mediumPriority {
-  background-color: orange;
+  background: linear-gradient(90deg, orange, white 50px);
 }
 
 .lowPriority {
-  background-color: yellow;
+  background: linear-gradient(90deg, green, white 50px);
 }
 
 .htmlList {
-  background-color: red;
+  background-color: white;
 }
 
 .itemAndButtons {
@@ -62,7 +85,7 @@ body {
   position: absolute;
   background-color: white;
   padding: 40px;
-  border-radius: 40px;
+  border-radius: 5px;
   border: solid blue;
 }
 
@@ -72,9 +95,38 @@ body {
   gap: 10px;
 }
 
-button {
-  border-radius: 30px;
-  padding: 10px 30px;
+.dueDateContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showMoreButton {
+  background: url('./images/more.svg');
+  background-size: 50% 50%;
+  width: 30px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+.editButton {
+  background: url('./images/edit.svg');
+  background-size: 50% 50%;
+  width: 30px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+.deleteButton {
+  background: url('./images/bin.svg');
+  background-size: 50% 50%;
+  width: 30px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center; 
 }
 
 .formSubmit {
@@ -93,5 +145,16 @@ button {
   justify-content: space-between;
 }
 .closeButton {
-  background-color: green;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 30px;
+  height: 30px;
+}
+
+.closeButton:hover {
+  background-color: white;
+  color: red;
+  border: white;
 }
