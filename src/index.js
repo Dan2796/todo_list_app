@@ -1,6 +1,6 @@
 import './style.css';
 import todoItem from './components/todoItem';
-import displayAddNewForm from './displayControllers/displayAddNewForm';
+import displayAddOrEditForm from './displayControllers/displayAddOrEditForm';
 import displayTodoList from './displayControllers/displayTodoList';
 
 // create main structure in the DOM
@@ -52,7 +52,7 @@ addNewButton.addEventListener('click', () => {
      query-selector all the fields created by the add new form, as well as the 
      button. Ultimately it's just using a function that already exists so 
      still counts as separation of display and application logic I think. */
-  displayAddNewForm(allTodos, htmlList, backgroundImageBox);
+  displayAddOrEditForm(allTodos, htmlList, backgroundImageBox);
 });
 
 // provide user with two examples

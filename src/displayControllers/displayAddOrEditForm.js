@@ -1,7 +1,14 @@
-import todoItem from './../components/todoItem';
+import todoItem from '../components/todoItem';
 import displayTodoList from './displayTodoList';
 
-export default function displayAddNewForm(todoList, htmlTodoList, formContainer) {
+export default function displayAddOrEditForm(
+    todoList, 
+    htmlTodoList, 
+    formContainer,
+    todoItemIndex = null,
+  ) {
+
+  const editing = todoItemIndex === null ? false : true;
 
   const formBox = document.createElement('form');
   formContainer.appendChild(formBox);
@@ -12,6 +19,7 @@ export default function displayAddNewForm(todoList, htmlTodoList, formContainer)
   formBox.appendChild(header);
 
   const titleElement = document.createElement('h3');
+  if (editing)
   titleElement.textContent = 'Add new to-do:';
   header.appendChild(titleElement);
 
@@ -77,6 +85,16 @@ export default function displayAddNewForm(todoList, htmlTodoList, formContainer)
   formSubmit.classList.add('formSubmit');
   formAddTodo.appendChild(formSubmit);
 
+  // populate form with data if editing existing todo
+  if (editing) {
+    const editedTodo = todoList.getListOfTodos()[todoItemIndex];
+    titleEntry.value = editedTodo.getTitle();
+    projectEntry.value = editedTodo.getProject();
+    descriptionEntry.value = editedTodo.getDescription();
+    dueDateEntry.value = editedTodo.getDueDate();
+    priorityEntry.value = editedTodo.getPriority();
+  }
+
   titleEntry.focus();
 
   formSubmit.addEventListener('click', (e) => {
@@ -84,13 +102,22 @@ export default function displayAddNewForm(todoList, htmlTodoList, formContainer)
     if (titleEntry.value == '') {
       return;
     }
-    todoList.addTodo(todoItem({
-      title: titleEntry.value,
-      project: projectEntry.value,
-      description: descriptionEntry.value,
-      dueDate: dueDateEntry.value,
-      priority: priorityEntry.value,
-    }));
+    // delete original item if editing
+    if (editing) {
+      todoList.getListOfTodos()[todoItemIndex].setTitle(titleEntry.value);
+      todoList.getListOfTodos()[todoItemIndex].setProject(projectEntry.value);
+      todoList.getListOfTodos()[todoItemIndex].setDescription(descriptionEntry.value);
+      todoList.getListOfTodos()[todoItemIndex].setDueDate(dueDateEntry.value);
+      todoList.getListOfTodos()[todoItemIndex].setPriority(priorityEntry.value);
+    } else {
+      todoList.addTodo(todoItem({
+        title: titleEntry.value,
+        project: projectEntry.value,
+        description: descriptionEntry.value,
+        dueDate: dueDateEntry.value,
+        priority: priorityEntry.value,
+      }));
+    }
     formContainer.removeChild(formBox);
     displayTodoList(todoList, htmlTodoList, formContainer);
   });

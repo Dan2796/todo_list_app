@@ -1,4 +1,6 @@
 import displayDetails from './displayDetails';
+import displayAddOrEditForm from './displayAddOrEditForm';
+
 export default function displayTodoList(todos, htmlParent, detailsContainer) {
   // eslint-disable-next-line no-param-reassign
   htmlParent.innerHTML = '';
@@ -33,7 +35,9 @@ export default function displayTodoList(todos, htmlParent, detailsContainer) {
     const editButton = document.createElement('button');
     editButton.textContent = '✐';
     element.classList.add('editButton')
-    editButton.onclick = () => console.log(`Edit item ${i}`);
+    editButton.onclick = () => {
+      displayAddOrEditForm(todos, htmlParent, detailsContainer, i);
+    }
     itemAndButtons.appendChild(editButton);
     // add delete button
     const deleteButton = document.createElement('button');
