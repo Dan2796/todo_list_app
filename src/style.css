@@ -57,6 +57,10 @@ body {
   background-color: red;
 }
 
+.itemAndButtons {
+  display: flex;
+}
+
 form {
   position: absolute;
   background-color: white;
@@ -75,4 +79,19 @@ button {
 
 .formSubmit {
   margin-top: 20px;
+}
+
+.detailsBox {
+  position: absolute;
+  background-color: white;
+  max-height: 900px;
+  max-width: 900px;
+}
+
+.detailsBoxHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.closeButton {
+  background-color: green;
 }

@@ -33,7 +33,8 @@ const allTodos = (() => {
       projects.push(newTodo.getProject());
     }
   };
-  return { getListOfTodos, getProjects, addTodo };
+  const deleteTodo = (index) => listOfTodos.splice(index, 1);
+  return { getListOfTodos, getProjects, addTodo, deleteTodo };
 })();
 
 function onNewEntry(todoList, htmlParent) {
@@ -70,11 +71,13 @@ allTodos.addTodo(todoItem({
 }));
 allTodos.addTodo(todoItem({
   title: 'Go for a lunchtime pint',
-  project: 'Swindon merge',
+  project: 'Swindon merger',
   description: 'Make sure the best people show up',
   dueDate: 'This lunchtime',
   priorty: 'Medium',
 }));
 
-displayTodoList(allTodos, htmlList);
+displayTodoList(allTodos, htmlList, backgroundImageBox);
 //displayDetails(allTodos.getListOfTodos()[0], detailsBox);
+
+const test = 'hello';
