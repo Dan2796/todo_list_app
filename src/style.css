@@ -58,12 +58,15 @@ body {
   display: flex;
 }
 
-form {
+.formBox {
   position: absolute;
   background-color: white;
   padding: 40px;
   border-radius: 40px;
   border: solid blue;
+}
+
+.addNewForm {
   display: flex;
   flex-direction: column;
   gap: 10px;

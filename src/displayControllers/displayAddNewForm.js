@@ -2,9 +2,27 @@ import todoItem from './../components/todoItem';
 import displayTodoList from './displayTodoList';
 
 export default function displayAddNewForm(todoList, htmlTodoList, formContainer) {
+
+  const formBox = document.createElement('form');
+  formContainer.appendChild(formBox);
+  formBox.classList.add('formBox');
   
+  const header = document.createElement('div');
+  header.classList.add('detailsBoxHeader');
+  formBox.appendChild(header);
+
+  const titleElement = document.createElement('h3');
+  titleElement.textContent = 'Add new to-do:';
+  header.appendChild(titleElement);
+
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'X';
+  closeButton.onclick = () => formContainer.removeChild(formBox);
+  closeButton.classList.add('closeButton');
+  header.appendChild(closeButton);
+
   const formAddTodo = document.createElement('form');
-  formContainer.appendChild(formAddTodo);
+  formBox.appendChild(formAddTodo);
   formAddTodo.classList.add('addNewForm');
 
   const titleLabel = document.createElement('label');
@@ -73,7 +91,7 @@ export default function displayAddNewForm(todoList, htmlTodoList, formContainer)
       dueDate: dueDateEntry.value,
       priority: priorityEntry.value,
     }));
-    formContainer.removeChild(formAddTodo);
+    formContainer.removeChild(formBox);
     displayTodoList(todoList, htmlTodoList, formContainer);
   });
 }
