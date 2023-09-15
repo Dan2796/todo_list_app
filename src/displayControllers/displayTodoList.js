@@ -54,7 +54,7 @@ export default function displayTodoList(todos, htmlParent, detailsContainer) {
     deleteButton.classList.add('deleteButton')
     deleteButton.onclick = () => {
       todos.deleteTodo(i);
-      displayTodoList(todos, htmlParent);
+      displayTodoList(todos, htmlParent, detailsContainer);
     }
     itemAndButtons.appendChild(deleteButton);
   }
