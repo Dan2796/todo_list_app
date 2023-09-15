@@ -82,6 +82,7 @@ button:hover {
 }
 
 .formBox {
+  min-width: 350px;
   position: absolute;
   background-color: white;
   padding: 40px;
@@ -137,13 +138,21 @@ button:hover {
   position: absolute;
   background-color: white;
   max-height: 900px;
-  max-width: 900px;
+  max-width: 600px;
+  min-width: 350px;
+  position: absolute;
+  background-color: white;
+  padding: 40px;
+  border-radius: 5px;
+  border: solid blue;
+  font-size: 16px;
 }
 
 .detailsBoxHeader {
   display: flex;
   justify-content: space-between;
 }
+
 .closeButton {
   background-color: red;
   color: white;
@@ -157,4 +166,8 @@ button:hover {
   background-color: white;
   color: red;
   border: white;
+}
+
+.hidden {
+  border:0px;
 }
