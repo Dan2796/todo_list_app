@@ -19,8 +19,7 @@ export default function displayAddOrEditForm(
   formBox.appendChild(header);
 
   const titleElement = document.createElement('h3');
-  if (editing)
-  titleElement.textContent = 'Add new to-do:';
+  titleElement.textContent = editing ? 'Edit:' : 'Add new to-do:';
   header.appendChild(titleElement);
 
   const closeButton = document.createElement('button');
