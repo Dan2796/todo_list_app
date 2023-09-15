@@ -73,7 +73,19 @@ export default function displayAddOrEditForm(
   priorityLabel.textContent = 'Priority';
   formAddTodo.appendChild(priorityLabel);
 
-  const priorityEntry = document.createElement('input');
+  const priorityEntry = document.createElement('select');
+  const highPriority = document.createElement('option');
+  const noPriority = document.createElement('option');
+  noPriority.text = "None";
+  highPriority.text = "High";
+  const mediumPriority = document.createElement('option');
+  mediumPriority.text = "Medium";
+  const lowPriority = document.createElement('option');
+  lowPriority.text = "Low";
+  priorityEntry.appendChild(noPriority);
+  priorityEntry.appendChild(highPriority);
+  priorityEntry.appendChild(mediumPriority);
+  priorityEntry.appendChild(lowPriority);
   priorityEntry.setAttribute('type', 'text');
   titleEntry.classList.add('priorityEntry');
   formAddTodo.appendChild(priorityEntry);
