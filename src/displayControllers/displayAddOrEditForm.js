@@ -19,7 +19,7 @@ export default function displayAddOrEditForm(
   formBox.appendChild(header);
 
   const titleElement = document.createElement('h3');
-  titleElement.textContent = editing ? 'Edit:' : 'Add new to-do:';
+  titleElement.textContent = editing ? 'Edit' : 'Add new to-do';
   header.appendChild(titleElement);
 
   const closeButton = document.createElement('button');
@@ -33,7 +33,7 @@ export default function displayAddOrEditForm(
   formAddTodo.classList.add('addNewForm');
 
   const titleLabel = document.createElement('label');
-  titleLabel.textContent = 'Task:';
+  titleLabel.textContent = 'Task (required)';
   formAddTodo.appendChild(titleLabel);
 
   const titleEntry = document.createElement('input');
@@ -43,7 +43,7 @@ export default function displayAddOrEditForm(
   formAddTodo.appendChild(titleEntry);
 
   const projectLabel = document.createElement('label');
-  projectLabel.textContent = 'Project:';
+  projectLabel.textContent = 'Project';
   formAddTodo.appendChild(projectLabel);
 
   const projectEntry = document.createElement('input');
@@ -52,7 +52,7 @@ export default function displayAddOrEditForm(
   formAddTodo.appendChild(projectEntry);
 
   const descriptionLabel = document.createElement('label');
-  descriptionLabel.textContent = 'Description:';
+  descriptionLabel.textContent = 'Description';
   formAddTodo.appendChild(descriptionLabel);
 
   const descriptionEntry = document.createElement('input');
@@ -61,7 +61,7 @@ export default function displayAddOrEditForm(
   formAddTodo.appendChild(descriptionEntry);
 
   const dueDateLabel = document.createElement('label');
-  dueDateLabel.textContent = 'Due:';
+  dueDateLabel.textContent = 'Due';
   formAddTodo.appendChild(dueDateLabel);
 
   const dueDateEntry = document.createElement('input');
@@ -70,7 +70,7 @@ export default function displayAddOrEditForm(
   formAddTodo.appendChild(dueDateEntry);
 
   const priorityLabel = document.createElement('label');
-  priorityLabel.textContent = 'Priority:';
+  priorityLabel.textContent = 'Priority';
   formAddTodo.appendChild(priorityLabel);
 
   const priorityEntry = document.createElement('input');
