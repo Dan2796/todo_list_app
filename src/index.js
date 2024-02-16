@@ -64,10 +64,10 @@ allTodos.addTodo(todoItem({
   priority: 'High',
 }));
 allTodos.addTodo(todoItem({
-  title: 'Go for a lunchtime pint',
+  title: 'Put through Brenda\'s pay',
   project: 'Swindon merger',
-  description: 'Make sure the best people show up',
-  dueDate: 'This lunchtime',
+  description: 'Develop a better system for doing this while at it.',
+  dueDate: 'ASAP',
   priority: 'Medium',
 }));
 
